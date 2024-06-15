@@ -1,60 +1,57 @@
-class Stack {
+//Queue
+class Queue {
   constructor() {
-    this.stack = [];
+    this.queue = [];
   }
 
-  push(data) {
-    return this.stack.push(data);
+  enqueue(data) {
+    return this.queue.push(data);
   }
-  pop() {
-    return this.stack.pop();
-  }
-  reverse() {
-    return this.stack.reverse();
-  }
-  isEmpty() {
-    if (this.stack.length === 0) {
-      console.log("Stack is empty");
-      return true;
-    } else {
-      console.log("Stack is not empty");
-      return false;
+
+  //remove 1st element
+  deQueue() {
+    if (this.isEmpty()) {
+      console.log("No element to deQueue");
+      return;
     }
-  }
-  peek() {
-    return this.stack[this.stack.length - 1];
+    return this.queue.shift();
   }
 
-  lastElement() {
-    return this.stack[0];
+  contains(ele) {
+    return this.queue.includes(ele);
   }
 
   size() {
-    return this.stack.length;
+    return this.queue.length;
   }
 
-  clear() {
-    this.stack = [];
+  peek() {
+    return this.queue[0];
   }
 
-  contains(key) {
-    return this.stack.includes(key);
-  }
-
-  printStack() {
-    let result = "";
-    for (let i = 0; i < this.stack.length; i++) {
-      result += this.stack[i] + "\n";
+  isEmpty() {
+    if (this.queue.length === 0) {
+      console.log("Queue is empty ");
+      return true;
     }
-    return result;
+    return false;
+  }
+
+  printQueue() {
+    let str = "";
+    for (let i = 0; i < this.queue.length; i++) {
+      str += this.queue[i] + "\n";
+    }
+    return str;
   }
 }
 
-const st = new Stack();
-st.push(2);
-st.push(22);
-st.push(24);
-st.pop();
-console.log(st.printStack());
-console.log(st.peek());
-console.log(st.contains(21));
+const myQueue = new Queue();
+myQueue.enqueue(2);
+myQueue.enqueue(4);
+myQueue.enqueue(6);
+myQueue.enqueue(8);
+myQueue.deQueue();
+
+console.log(myQueue.printQueue());
+console.log(myQueue.peek());
